@@ -32,7 +32,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: composer require phpunit/phpunit ^9
+      - run: composer install -n --prefer-dist
 
       - run: yarn install
       - run: ls /home/circleci
