@@ -1,6 +1,6 @@
 {
   "require": {
-    "phpunir/phpunit": "^9.*"
+    "phpunir/phpunit": "^9"
   },
   "autoload": {
     "psr-4": {
