@@ -1,6 +1,6 @@
 <?php
 
-class myTest extends PHPunit_Framework_Testcase{
+class myTest extends PHPunit\Framework\Testcase{
     /*
      * testing some functions
      */
