@@ -44,7 +44,8 @@ jobs:
             - node-v1-
       - run: yarn install
       - run: ls /home/circleci
-      - run: ls /home/circleci/project
+      - run: ls -l /home/circleci/project
+      - run: chmod 777 tests
       - run: ls /home/circleci/projet/tests 
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}
