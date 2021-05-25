@@ -1,5 +1,7 @@
 <?php
-class authenTest extends PHPunit\Framework\Testcase{
+use PHPUnit\Framework\TestCase;
+
+class authenTest extends Testcase{
     /*
      * testing some functions
      */
