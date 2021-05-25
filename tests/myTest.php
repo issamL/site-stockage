@@ -1,5 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
+require __DIR__ . "/../functions.php";
 
 class myTest extends Testcase{
    
