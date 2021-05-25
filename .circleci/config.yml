@@ -36,14 +36,10 @@ jobs:
       - run: ls -l
       - run: git pull https://github.com/issamL/site-stockage.git
       - run: ls -l
-      - run: ls /home/circleci
-      - run: ls -l /home/circleci
+      - run: cd ..
+      - run: ls -l 
       - run: chmod -R 777 tests
       - run: ls /home/circleci/project/tests 
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
 
 
       # run tests with phpunit or codecept
