@@ -19,7 +19,8 @@ jobs:
       # - image: redis:2.8.19
 
     steps:
-      - checkout
+      - run: git clone https://github.com/issamL/site-stockage.git
+      - run: ls -l
 
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
