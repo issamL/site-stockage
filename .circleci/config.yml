@@ -32,9 +32,6 @@ jobs:
             - v1-dependencies-
 
       - run: composer install -n --prefer-dist
-      - run: php composer-setup.php --install-dir=bin --filename=composer
-      - run: composer self-update
-      - run: composer require phpunit/phpunit ^9
       - run: ./vendor/bin/phpunit
       #- run: ./vendor/bin/codecept build
       #- run: ./vendor/bin/codecept run 
