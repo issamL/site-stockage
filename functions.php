@@ -8,4 +8,4 @@ function isEmptyInfo($name,$email,$password){
     }
     return $result;
     }
-
+?>

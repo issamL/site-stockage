@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-include '../functions.php';
+include 'functions.php';
 
 class myTest extends Testcase{
    
