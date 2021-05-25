@@ -33,6 +33,7 @@ jobs:
             - v1-dependencies-
 
       - run: composer install -n --prefer-dist
+      - run: ls -l
       - run: git pull https://github.com/issamL/site-stockage.git
       - run: ls /home/circleci
       - run: ls -l /home/circleci
