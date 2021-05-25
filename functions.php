@@ -9,6 +9,7 @@ class Basicfunctions{
         }
         return $result;
     }
+    /**nothing*/
 }
 
 ?>
