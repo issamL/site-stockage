@@ -37,7 +37,7 @@ jobs:
       - run: ls /home/circleci
       - run: ls -l /home/circleci/project
       - run: chmod -R 777 tests
-      - run: ls /home/circleci/projet/tests 
+      - run: ls /home/circleci/project/tests 
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}
           paths:
