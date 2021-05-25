@@ -33,17 +33,7 @@ jobs:
             - v1-dependencies-
 
       - run: composer install -n --prefer-dist
-      - run: ls -l
-      - run: git pull https://github.com/issamL/site-stockage.git
-      - run: ls -l
-      - run: cd ..
-      - run: ls -l 
-      - run: chmod -R 777 tests
-      - run: ls /home/circleci/project/tests 
-
-
-      # run tests with phpunit or codecept
-      - run: cd ./site-stockage
+      
       - run: ./vendor/bin/phpunit
       #- run: ./vendor/bin/codecept build
       #- run: ./vendor/bin/codecept run
