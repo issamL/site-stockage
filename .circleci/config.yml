@@ -2,7 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
-version: 2
+version: 2.1
+orbs:
+  sonarscanner: psl/sonarscanner@0.0.4
 jobs:
   build:
     docker:
@@ -34,5 +36,8 @@ jobs:
       - run: composer install -n --prefer-dist
       - run: ls -l
       - run: ./vendor/bin/phpunit
+      - sonarscanner/check-code-quality
       #- run: ./vendor/bin/codecept build
-      #- run: ./vendor/bin/codecept run 
+      #- run: ./vendor/bin/codecept run
+      
+
