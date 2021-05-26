@@ -4,22 +4,11 @@
 #
 version: 2.1
 orbs:
-  sonarscanner: psl/sonarscanner@0.0.4
+  sonarcloud: extendaretail/sonarcloud@0.0.2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
       - image: circleci/php:7.3-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
     steps:
       - checkout
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
@@ -32,12 +21,20 @@ jobs:
             - v1-dependencies-{{ checksum "composer.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: composer install -n --prefer-dist
-      - run: ls -l
       - run: ./vendor/bin/phpunit
-      - sonarscanner/check-code-quality
-      #- run: ./vendor/bin/codecept build
-      #- run: ./vendor/bin/codecept run
+
+
+workflows:
+  building and testing:
+    jobs:
+      - build
+  sonar analysis:
+    jobs:
+      - sonarcloud/scan_with_npm:
+          context: sonarcloud
+       
+  
+  
       
 
