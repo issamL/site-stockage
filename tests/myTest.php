@@ -13,14 +13,13 @@ class myTest extends Testcase{
         $this -> assertEquals(false,$result);
     }
 
-    ///** @test */
-    /**
+    /** @test */
     public function testInputFalse(){
 
         $funct = new myfunctions\Basicfunctions;
         $result = $funct ->isEmptyInfo('','!null','!null');
 
-        $this -> assertEquals(false,$result);
+        $this -> assertEquals(true,$result);
     }
-    */
+
 }

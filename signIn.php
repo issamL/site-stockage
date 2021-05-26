@@ -4,8 +4,10 @@ include 'functions.php';
 
 $exists=false;
 $existingUser = $_POST['username'];
+$funct = new myfunctions\Basicfunctions;
 $password = $_POST['pwd'];
-if(isEmptyInfo($existingUser,$password,'not null')){
+$result = $funct -> isEmptyInfo(isEmptyInfo($existingUser,$password,'not null'));
+if($result){
     header("location: login.html?error=emptyinput");
     exit();
 }

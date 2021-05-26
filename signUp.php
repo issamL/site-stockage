@@ -6,7 +6,7 @@ include 'functions.php';
 
 //checking if user already exists
 $userN = $_POST['name'];
-if(isEmptyInfo($userN,$_POST['password'],$_POST['email'])){
+if(Basic($userN,$_POST['password'],$_POST['email'])){
     header("location: login.html?error=emptyinput");
     exit();
 }
