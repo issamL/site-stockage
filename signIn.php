@@ -6,7 +6,6 @@ $exists=false;
 
 $existingUser = $_POST['username'];
 $password = $_POST['pwd'];
-$empty='';
 $funct = new myfunctions\Basicfunctions;
 
 $result = $funct -> isEmptyInfo(isEmptyInfo($existingUser,$password,'not null'));
