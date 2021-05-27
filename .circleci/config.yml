@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
-  sonarcloud: extendaretail/sonarcloud@0.0.2
+  #sonarcloud: extendaretail/sonarcloud@0.0.2
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 jobs:
   build:
     docker:
@@ -19,12 +20,15 @@ jobs:
             - v1-dependencies-
       - run: composer install -n --prefer-dist
       - run: ./vendor/bin/phpunit
-      - sonarcloud/scan_with_npm:
+      #- sonarcloud/scan_with_npm:
+      #  context: sonarcloud
+      - sonarcloud/scan:
         context: sonarcloud
 workflows:
   main:
     jobs:
       - build
+      
   
       
 
