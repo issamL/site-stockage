@@ -3,9 +3,12 @@ include 'dbConfig.php';
 include 'functions.php';
 
 $exists=false;
+
 $existingUser = $_POST['username'];
-$funct = new myfunctions\Basicfunctions;
 $password = $_POST['pwd'];
+$empty='';
+$funct = new myfunctions\Basicfunctions;
+
 $result = $funct -> isEmptyInfo(isEmptyInfo($existingUser,$password,'not null'));
 if($result){
     header("location: login.html?error=emptyinput");
