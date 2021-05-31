@@ -22,13 +22,13 @@ jobs:
        # context: sonarcloud
   test build:
     docker:
+      - image: node:latest
       - image: selenium/hub
         name: hub
       - image: selenium/node-firefox
         environment:
           HUB_PORT_4444_TCP_ADDR: hub
           HUB_PORT_4444_TCP_PORT: 4444
-      - image: node:latest
 
     working_directory: ~/repo
 
