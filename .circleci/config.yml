@@ -22,33 +22,39 @@ jobs:
   #      # context: sonarcloud
   test build:
     docker:
-      - image: circleci/node:jessie-browsers
+      - image: node:latest
+
+    working_directory: ~/repo
+
     steps:
       - checkout
+
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "wdio/package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: chmod -R 777 wdio
       - run: cd wdio && npm install -g npm@7.15.0
       - run: cd wdio && npm install @wdio/cli
-      - run:
-          name: Download Selenium Standalone Server
-          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
-      - run:
-          name: Start Selenium Standalone Server
-          command: java -jar selenium-server-standalone-3.5.3.jar -log report/selenium.log
-          background: true
-      - run:
-          name: Install Node Modules
-          command: npm install
-      - run:
-          name: Test
-          command: npx wdio run wdio.conf.js
-      - store_test_results:
-          path: report
+      - run: 
+          command: cd wdio && npx wdio run wdio.conf.js 
+          name: running test
+      # - run:
+      #     name: Download Selenium Standalone Server
+      #     command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      # - run:
+      #     name: Start Selenium Standalone Server
+      #     command: java -jar selenium-server-standalone-3.5.3.jar -log report/selenium.log
+      #     background: true
+      # - run:
+      #     name: Install Node Modules
+      #     command: npm install
+      # - run:
+      #     name: Test
+      #     command: npx wdio run wdio.conf.js
+      # - store_test_results:
+      #     path: report
       
 
   # test chrome:
