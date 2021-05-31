@@ -23,12 +23,6 @@ jobs:
   test build:
     docker:
       - image: node:latest
-      - image: selenium/hub
-        name: hub
-      - image: selenium/node-firefox
-        environment:
-          HUB_PORT_4444_TCP_ADDR: hub
-          HUB_PORT_4444_TCP_PORT: 4444
 
     working_directory: ~/repo
 
@@ -46,7 +40,6 @@ jobs:
       - run: 
           command: cd wdio && npx wdio run wdio.conf.js 
           name: running test
-          background: true
 
 workflows:
   version: 2
