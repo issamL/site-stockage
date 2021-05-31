@@ -43,8 +43,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run compile && npm run lint
-
   test-chrome:
     docker:
       - image: atools/chrome-headless:java11-node12-latest
@@ -64,7 +62,7 @@ jobs:
       - run: npm install
 
       - run: google-chrome --version
-      - run: npm run test:headless -- --chrome
+      - run: npx wdio run wdio.conf.js
 workflows:
   version: 2
   main:
