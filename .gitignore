@@ -2,3 +2,5 @@ dbConfig.php
 .idea
 squelette.html
 readme.txt
+wdio/allure-results
+wdio/node_modules
