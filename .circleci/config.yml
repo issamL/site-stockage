@@ -23,7 +23,10 @@ jobs:
   test build:
     docker:
       - image: node:latest
-      - image: atools/chrome-headless:node12-latest
+      - image: selenium/node-chrome
+        environment:
+          HUB_PORT_4444_TCP_ADDR: hub
+          HUB_PORT_4444_TCP_PORT: 4444
 
     working_directory: ~/repo
 
