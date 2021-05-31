@@ -22,7 +22,7 @@ jobs:
        # context: sonarcloud
   test build:
     docker:
-      - image: node:latest
+      - image: circleci/node:7.10
       - image: circleci/node:jessie-browsers
     steps:
       - checkout
