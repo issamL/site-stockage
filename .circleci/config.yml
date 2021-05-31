@@ -36,10 +36,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: cd wdio && ls
-      - run: npm install -g npm@7.15.0
-      - run: npm install @wdio/cli
-      - run: ls
-      - run: npx wdio run wdio.conf.js
+      - run: cd wdio && npm install -g npm@7.15.0
+      - run: cd wdio && npm install @wdio/cli
+      - run: cd wdio && ls
+      - run: cd wdio && npx wdio run wdio.conf.js
 
       
 workflows:
