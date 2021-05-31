@@ -35,7 +35,7 @@ jobs:
             - v1-dependencies-
       - run: cd wdio && npm install -g npm@7.15.0
       - run: cd wdio && npm install @wdio/cli
-      - run: apt install -y sudo # https://discuss.circleci.com/t/sudo-command-not-found/14208/4
+      - run: apt-get install sudo # https://discuss.circleci.com/t/sudo-command-not-found/14208/4
       - run: sudo apt update
       - run: cd wdio && apt install libnss
       - run: cd wdio && apt install libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
