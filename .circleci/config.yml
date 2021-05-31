@@ -20,7 +20,7 @@ jobs:
   #      # context: sonarcloud
   #     #- sonarcloud/scan:
   #      # context: sonarcloud
-  test build:
+  test builder:
     docker:
       - image: node:latest
 
@@ -92,7 +92,7 @@ workflows:
   #     - local test
   test:
     jobs:
-      - test build
+      - test builder
       
   
 
