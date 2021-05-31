@@ -23,6 +23,7 @@ jobs:
   test build:
     docker:
       - image: node:latest
+      - image: atools/chrome-headless:node12-latest
 
     working_directory: ~/repo
 
