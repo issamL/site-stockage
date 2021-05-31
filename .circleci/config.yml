@@ -38,6 +38,7 @@ jobs:
       - run: ls
       - run: npm install -g npm@7.15.0
       - run: npm install @wdio/cli
+      - run: npx wdio run wdio.conf.js
 
       
 workflows:
