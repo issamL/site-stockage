@@ -43,7 +43,10 @@ jobs:
             - v1-dependencies-
       - run: cd wdio && npm install -g npm@7.15.0
       - run: cd wdio && npm install @wdio/cli
-      - run: cd wdio && npx wdio run wdio.conf.js 
+      - run: 
+          command: cd wdio && npx wdio run wdio.conf.js 
+          name: running test
+          background: true
 
 workflows:
   version: 2
