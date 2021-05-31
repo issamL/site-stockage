@@ -6,13 +6,13 @@ $exists=false;
 
 $existingUser = $_POST['username'];
 $password = $_POST['pwd'];
-$funct = new myfunctions\Basicfunctions;
 
-$result = $funct -> isEmptyInfo(isEmptyInfo($existingUser,$password,'not null'));
-if($result){
+$funct = new myfunctions\Basicfunctions();
+if($funct -> isEmptyInfo($existingUser,$password,'not null')){
     header("location: login.html?error=emptyinput");
     exit();
 }
+
 $verifUser = "SELECT username, password from users";
 $result = $conn->prepare($verifUser);
 //returns an array containing all usernames

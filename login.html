@@ -14,10 +14,7 @@
 		}
 	</script>
     <title>Login</title>
-	<?php
-		include 'signUp.php';
-		include 'signIn.php';
-	?>
+
 
 </head>
 <style>
@@ -289,10 +286,10 @@
 	<div class="form-container sign-in-container">
 		<form action="signIn.php" method= POST>
 			<h1>Sign in</h1>
-			<input type="text" name="username" placeholder="Name" />
-			<input type="password" name="pwd" placeholder="Password" />
+			<input type="text" name="username" id="username" placeholder="Name" />
+			<input type="password" name="pwd" id="pwd" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
-			<button type="submit" name="signin">Sign In</button>
+			<button type="submit" id="signInSubmit" name="signin">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
