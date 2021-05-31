@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
@@ -66,6 +66,7 @@ jobs:
       - run: google-chrome --version
       - run: npm run test:headless -- --chrome
 workflows:
+  version: 2
   main:
     jobs:
       - build
