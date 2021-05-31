@@ -57,7 +57,7 @@ jobs:
           command: npm install
       - run:
           name: Test
-          command: npm test wdio.conf.js
+          command: npx wdio run wdio.conf.js
       - store_test_results:
           path: report
 
