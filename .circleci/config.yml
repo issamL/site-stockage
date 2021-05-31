@@ -35,34 +35,11 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+      - run: ls
+      - run: npm install -g npm@7.15.0
+      - run: npm install @wdio/cli
 
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-  test-chrome:
-    docker:
-      - image: atools/chrome-headless:java11-node12-latest
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: npm install webdriverio
-
-      - run: google-chrome --version
-      - run: npx wdio run wdio.conf.js
+      
 workflows:
   version: 2
   main:
@@ -71,7 +48,7 @@ workflows:
   test:
     jobs:
       - test build
-      - test-chrome
+      
   
 
       
