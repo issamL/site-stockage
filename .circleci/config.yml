@@ -22,7 +22,7 @@ jobs:
   #      # context: sonarcloud
   test build:
     docker:
-      - image: node:latest
+      - image: circleci/node:latest
 
     steps:
       - checkout
