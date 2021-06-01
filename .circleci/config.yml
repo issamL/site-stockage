@@ -22,7 +22,7 @@ jobs:
   #      # context: sonarcloud
   test builder:
     docker:
-      - image: cimg/go:1.16
+      - image: node:12
 
 
     steps:
