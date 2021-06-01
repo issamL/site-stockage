@@ -22,8 +22,7 @@ jobs:
   #      # context: sonarcloud
   test builder:
     docker:
-      - image: circleci/node:latest
-
+      - image: cimg/go:1.16
 
     steps:
       - checkout
@@ -34,6 +33,7 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies
+      - run: npm install
       - run: cd wdio && npm install @wdio/cli
       # - run: apt-get install sudo # https://discuss.circleci.com/t/sudo-command-not-found/14208/4
       # - run: sudo apt update
