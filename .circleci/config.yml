@@ -33,8 +33,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: cd wdio && npm install -g npm@7.15.0
+            - v1-dependencies
       - run: cd wdio && npm install @wdio/cli
       - run: apt-get install sudo # https://discuss.circleci.com/t/sudo-command-not-found/14208/4
       - run: sudo apt update
