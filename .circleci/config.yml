@@ -36,6 +36,7 @@ jobs:
       - run: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
       - run: sudo apt-get install -y nodejs
       - run: cd wdio && npm install @wdio/cli
+      - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       # - run: apt-get install sudo # https://discuss.circleci.com/t/sudo-command-not-found/14208/4
       # - run: sudo apt update
       # - run: chmod -R 777 wdio
