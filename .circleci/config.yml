@@ -22,7 +22,7 @@ jobs:
   #      # context: sonarcloud
   test builder:
     docker:
-      - image: node:12
+      - image: node:latest
 
 
     steps:
