@@ -28,8 +28,11 @@ if ($doublon != true) {
     $createUser = "INSERT INTO users (username, password, email)  VALUES (?,?,?)";
     $stmt = $conn->prepare($createUser);
     $stmt->execute($data);
+    header("location: index.html?user=true");
+    exit();
 } else {
-    echo "username already exists";
+    header("location: login.html?error=username_exists");
+    exit();
 }
 
 

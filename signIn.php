@@ -24,6 +24,8 @@ while (($row = $result->fetch(PDO::FETCH_NUM)) && $exists==false) {
 }
 if($exists==true){
     header("location: index.html?user=true");
+    exit();
 }else{
-    echo "username or password incorrect :)";
+    header("location: login.html?user=false");
+    exit();
 }
