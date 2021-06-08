@@ -1,11 +1,7 @@
 <?php
-//include 'dbConfig.php';
+include 'dbConfig.php';
 include 'functions.php';
-//connection
-$conn = new PDO("mysql:host=database-2.cpjphvxsypnw.eu-west-3.rds.amazonaws.com;dbname=userlogin;port=3306", "admin", "kharabacha2021");
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//script
 $exists=false;
 
 $existingUser = $_POST['username'];
