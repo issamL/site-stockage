@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   # local test:
   #   docker:
@@ -37,12 +37,10 @@ jobs:
             paths:
               - node_modules
             key: v1-dependencies-{{ checksum "package.json" }}
-
         - run: npm install @wdio/cli
         - run: npx wdio run ./wdio.conf.js
 
 workflows:
-  version: 2
   # main:
   #   jobs:
   #    - local test
