@@ -21,7 +21,6 @@ jobs:
       #- sonarcloud/scan:
        # context: sonarcloud
 
-  jobs:
     wdio test:
       docker:
         - image: circleci/node:lts-browsers
