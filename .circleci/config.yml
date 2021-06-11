@@ -37,7 +37,7 @@ jobs:
             paths:
               - node_modules
             key: v1-dependencies-{{ checksum "package.json" }}
-        - run: npm install @wdio/cli
+        - run: sudo npm install @wdio/cli
         - run: cd wdio && npx wdio run wdio.conf.js
         - run: cd wdio && allure open
 
