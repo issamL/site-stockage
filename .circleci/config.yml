@@ -1,25 +1,21 @@
-version: 2.1
+
 jobs:
-  # local test:
-  #   docker:
-  #     - image: circleci/php:7.3-node-browsers
-  #   steps:
-  #     - checkout
-  #     - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-  #     - run: sudo docker-php-ext-install zip
-  #     # Download and cache dependencies
-  #     - restore_cache:
-  #         keys:
-  #           # "composer.lock" can be used if it is committed to the repo
-  #           - v1-dependencies-{{ checksum "composer.json" }}
-  #           # fallback to using the latest cache if no exact match is found
-  #           - v1-dependencies-
-  #     - run: composer install -n --prefer-dist
-  #     - run: ./vendor/bin/phpunit
-  #     #- sonarcloud/scan_with_npm:
-  #      # context: sonarcloud
-  #     #- sonarcloud/scan:
-  #      # context: sonarcloud
+  local test:
+    docker:
+      - image: circleci/php:7.3-node-browsers
+    steps:
+      - checkout
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: composer install -n --prefer-dist
+      - run: ./vendor/bin/phpunit
 
   wdio test:
     docker:
@@ -40,13 +36,25 @@ jobs:
       - run: npm install @wdio/cli
       - run: cd wdio && npm test
 
+  sonar analysis:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - sonarcloud/scan
+version: 2.1
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.2
 workflows:
-  # main:
-  #   jobs:
-  #    - local test
-  build:
+  back-end test:
+    jobs:
+     - local test
+  wdio test:
     jobs:
       - wdio test
+  analysis:
+    jobs:
+      - sonar analysis
       
   
 
