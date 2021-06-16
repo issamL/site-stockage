@@ -38,7 +38,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm install @wdio/cli
-      - run: npx wdio run ./wdio.conf.js
+      - run: cd wdio && npm test
 
 workflows:
   # main:
