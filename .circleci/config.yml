@@ -41,7 +41,8 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - sonarcloud/scan
+      - sonarcloud/scan:
+        context: sonarcloud
 version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
@@ -52,7 +53,7 @@ workflows:
   wdio test:
     jobs:
       - wdio test
-  analysis:
+  sonar analysis:
     jobs:
       - sonar analysis
       
