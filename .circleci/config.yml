@@ -47,14 +47,10 @@ version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 workflows:
-  back-end test:
+  main:
     jobs:
-     - local test
-  wdio test:
-    jobs:
+      - local test
       - wdio test
-  sonar analysis:
-    jobs:
       - sonar analysis
       
   
