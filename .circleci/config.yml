@@ -74,25 +74,33 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     working_directory: ~/repo
-    steps:
-      - checkout
-      - run: sudo apt-get update
-      - run: wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.3.zip
-      - run: sudo apt-get install unzip
-      - run: unzip apache-jmeter-5.3.zip
-      - run: sudo mv load-test/* apache-jmeter-5.3/bin/
-      - run: cd apache-jmeter-5.3/bin && ls
-      - run: cd ../../../usr && ls
-      - run: cd ../../../usr/lib && ls
-      - run: cd ../../../usr/lib/jvm && ls
-      - run:
-          name: running jmeter test
-          command: cd apache-jmeter-5.3/bin && sudo ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
-          environement:
-            JAVA_HOME: /usr/lib/jvm/java-6-openjdk-amd64
 
-      - store_artifacts:
-          path: ./load-test/testresults.jtl
+      environment:
+        # Customize the JVM maximum heap limit
+        MAVEN_OPTS: -Xmx3200m
+
+      steps:
+        - checkout
+
+        # Download and cache dependencies
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "pom.xml" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
+
+        - run: mvn dependency:go-offline
+
+        - save_cache:
+            paths:
+              - ~/.m2
+            key: v1-dependencies-{{ checksum "pom.xml" }}
+
+        # run tests!
+        - run: mvn verify
+
+        - store_artifacts:
+            path: target/jmeter/reports
 
 
 version: 2.1
