@@ -76,11 +76,11 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - sudo apt-get update
-      - sudo wget -c http://ftp.ps.pl/pub/apache//jmeter/binaries/apache-jmeter-3.2.zip
-      - sudo apt-get install unzip
-      - unzip apache-jmeter-3.2.zip
-      - cd load-test && sh jmeter.sh -n -t sign-in-scenario.jmx
+      - run: sudo apt-get update
+      - run: sudo wget -c http://ftp.ps.pl/pub/apache//jmeter/binaries/apache-jmeter-3.2.zip
+      - run: sudo apt-get install unzip
+      - run: unzip apache-jmeter-3.2.zip
+      - run: cd load-test && sh jmeter.sh -n -t sign-in-scenario.jmx
 
 version: 2.1
 orbs:
