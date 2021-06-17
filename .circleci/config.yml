@@ -82,9 +82,15 @@ jobs:
       - run: unzip apache-jmeter-5.3.zip
       - run: sudo mv load-test/* apache-jmeter-5.3/bin/
       - run: cd apache-jmeter-5.3/bin && ls
-      - run: cd ../../../lib && ls
-      - run: cd ../../../lib/jvm && ls
-      - run: cd apache-jmeter-5.3/bin && sudo ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
+      - run: cd ../../../usr && ls
+      - run: cd ../../../usr/lib && ls
+      - run: cd ../../../usr/lib/jvm && ls
+      - run:
+          name: running jmeter test
+          command: cd apache-jmeter-5.3/bin && sudo ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
+          environement:
+            JAVA_HOME: /usr/lib/jvm/java-6-openjdk-amd64
+
       - store_artifacts:
           path: ./load-test/testresults.jtl
 
