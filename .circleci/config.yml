@@ -35,9 +35,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm install @wdio/cli
       - run: cd wdio && npm test
-      - store_artifacts:
-          path: /wdio/allure-results
-          destination: allure-results      
+      - run:
+          name: Compress Artifacts
+          command: tar -cvzf allure-results.tar ./wdio/allure-results
+
+      - store_artifacts: 
+          path: ./wdio/allure-results.tar
+          destination: artifact_name
+     
 
   sonar analysis:
     docker:
@@ -52,9 +57,9 @@ orbs:
 workflows:
   main:
     jobs:
-      - local test
+      #- local test
       - wdio test
-      - sonar analysis
+      #- sonar analysis
       
   
 
