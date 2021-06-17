@@ -109,9 +109,9 @@ orbs:
 workflows:
   main:
     jobs:
-      #- backend tests
-      #- automatic test
-      #- sonar analysis
+      - backend tests
+      - automatic test
+      - sonar analysis
       - load test
       
   
