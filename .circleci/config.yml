@@ -104,7 +104,7 @@ workflows:
       #- local test
       #- wdio test
       #- sonar analysis
-      -load test
+      - load test
       
   
 
