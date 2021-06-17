@@ -50,8 +50,9 @@ workflows:
   main:
     jobs:
       - local test
-      - wdio test
       - sonar analysis
+      - wdio test
+
       
   
 
