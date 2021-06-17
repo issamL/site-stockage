@@ -40,8 +40,8 @@ jobs:
           command: tar -cvzf allure-results.tar ./wdio/allure-results
 
       - store_artifacts: 
-          path: ./wdio/allure-results.tar
-          destination: artifact_name
+          path: site-stockage/wdio/allure-results.tar
+          destination: allure-results
      
 
   sonar analysis:
@@ -51,6 +51,8 @@ jobs:
       - checkout
       - sonarcloud/scan:
         context: sonarcloud
+  
+  charge test:
 version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
@@ -60,6 +62,7 @@ workflows:
       #- local test
       - wdio test
       #- sonar analysis
+      #-charge test
       
   
 
