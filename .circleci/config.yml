@@ -82,7 +82,8 @@ jobs:
       - run: unzip apache-jmeter-5.3.zip
       - run: sudo mv load-test/* apache-jmeter-5.3/bin/
       - run: cd apache-jmeter-5.3/bin && ls
-      - run: cd .. && ls && cd .. && ls && cd .. && ls && cd .. && ls
+      - run: cd ../../../lib && ls
+      - run: cd ../../../lib/jvm && ls
       - run: cd apache-jmeter-5.3/bin && sudo ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
       - store_artifacts:
           path: ./load-test/testresults.jtl
