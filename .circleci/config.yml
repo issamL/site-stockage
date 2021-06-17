@@ -80,7 +80,7 @@ jobs:
       - run: wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.3.zip
       - run: sudo apt-get install unzip
       - run: unzip apache-jmeter-5.3.zip
-      - run: sudo mv load-test/sign-in-scenario.jmx apache-jmeter-5.3/bin/
+      - run: sudo mv load-test/* apache-jmeter-5.3/bin/
       - run: cd apache-jmeter-5.3/bin && sudo ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
       - store_artifacts:
           path: ./load-test/testresults.jtl
