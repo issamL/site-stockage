@@ -1,5 +1,5 @@
 jobs:
-  local test:
+  backend tests:
     docker:
       - image: circleci/php:7.3-node-browsers
     steps:
@@ -17,7 +17,7 @@ jobs:
       - run: ./vendor/bin/phpunit
       - store_test_results
 
-  wdio test:
+  automatic test:
     docker:
       - image: circleci/node:lts-browsers
     working_directory: ~/repo
@@ -80,7 +80,8 @@ jobs:
       - run: wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.3.zip
       - run: sudo apt-get install unzip
       - run: unzip apache-jmeter-5.3.zip
-      - run: cd apache-jmeter-5.3/bin && ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
+      - run: sudo mv load-test/sign-in-scenario.jmx apache-jmeter-5.3/bin/
+      - run: cd apache-jmeter-5.3/bin && sudo ./jmeter -n –t ../../load-test/sign-in-scenario.jmx -l testresults.jtl
       - store_artifacts:
           path: ./load-test/testresults.jtl
 
@@ -91,8 +92,8 @@ orbs:
 workflows:
   main:
     jobs:
-      #- local test
-      #- wdio test
+      #- backend tests
+      #- automatic test
       #- sonar analysis
       - load test
       
