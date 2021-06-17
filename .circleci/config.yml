@@ -77,7 +77,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - run: sudo wget -c http://ftp.ps.pl/pub/apache//jmeter/binaries/apache-jmeter-3.2.zip
+      - run: wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.3.zip
       - run: sudo apt-get install unzip
       - run: unzip apache-jmeter-3.2.zip
       - run: cd load-test && sh jmeter.sh -n -t sign-in-scenario.jmx
