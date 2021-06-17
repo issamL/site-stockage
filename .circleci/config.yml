@@ -80,9 +80,13 @@ jobs:
       - run: wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.3.zip
       - run: sudo apt-get install unzip
       - run: unzip apache-jmeter-5.3.zip
+<<<<<<< HEAD
       - run: cd load-test && jmeter -n –t sign-in-scenario.jmx -l testresults.jtl
       - store artifacts:
           path: ./load-test/testresults.jtl
+=======
+      - run: cd load-test && sudo sh jmeter.sh -n -t sign-in-scenario.jmx
+>>>>>>> 0accd34936d5b31ebfbf7134f86ce3ec5947665b
 
 version: 2.1
 orbs:
