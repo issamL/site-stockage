@@ -16,6 +16,7 @@ jobs:
             - v1-dependencies-
       - run: composer install -n --prefer-dist
       - run: ./vendor/bin/phpunit
+      - store_test_results      
 
   wdio test:
     docker:
@@ -35,12 +36,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm install @wdio/cli
       - run: cd wdio && npm test
-      - run:
-          name: Compress Artifacts
-          command: tar -cvzf allure-results.tar ./wdio/allure-results
-
       - store_artifacts: 
-          path: ./wdio/allure-results.tar
+          path: /wdio/allure-results
      
 
   sonar analysis:
