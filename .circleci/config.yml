@@ -35,6 +35,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm install @wdio/cli
       - run: cd wdio && npm test
+      - store_artifacts:
+          path: /wdio/allure-results
+          destination: allure-results      
 
   sonar analysis:
     docker:
