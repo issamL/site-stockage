@@ -8,6 +8,6 @@ module.exports = class Page {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     open (path) {
-        return browser.url(`http://15.236.209.31/${path}`)
+        return browser.url(`http://35.180.120.120/${path}`)
     }
 }
